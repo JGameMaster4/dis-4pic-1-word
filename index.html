@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>4 Pics 1 Word Game</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f2f2f2;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+            height: 100vh;
+            margin: 0;
+        }
+
+        .game-container {
+            text-align: center;
+            background-color: white;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1);
+            width: 350px;
+        }
+
+        h1 {
+            font-size: 24px;
+            margin-bottom: 20px;
+        }
+
+        .images-container {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            margin-bottom: 20px;
+        }
+
+        .image {
+            width: 80px;
+            height: 80px;
+            object-fit: cover;
+            border-radius: 8px;
+            box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        input[type="text"] {
+            padding: 10px;
+            font-size: 18px;
+            width: 200px;
+            text-align: center;
+            margin-bottom: 20px;
+            border-radius: 5px;
+            border: 1px solid #ccc;
+        }
+
+        button {
+            padding: 10px 20px;
+            font-size: 16px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        #winPopup {
+            display: none;
+            position: fixed;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 20px;
+            border-radius: 10px;
+            font-size: 20px;
+            text-align: center;
+        }
+
+        #winPopup button {
+            background-color: #28a745;
+            color: white;
+            border: none;
+            padding: 10px;
+            cursor: pointer;
+            border-radius: 5px;
+        }
+
+        #winPopup button:hover {
+            background-color: #218838;
+        }
+
+    </style>
+</head>
+<body>
+
+<div class="game-container">
+    <h1>Guess the Word!</h1>
+    <div class="images-container">
+        <img src="https://i.pinimg.com/736x/bf/6c/6f/bf6c6f316406ff7ac2c768681ab83127.jpg" alt="Image 1" class="image">
+        <img src="https://th.bing.com/th/id/OIP.B-AkpnSrzXqI9DL4emDREwHaLG?rs=1&pid=ImgDetMain" alt="Image 2" class="image">
+        <img src="https://i.pinimg.com/736x/a5/d6/9d/a5d69d35256e36c3d47db51d4b050154.jpg" alt="Image 3" class="image">
+        <img src="https://www.lionheartv.net/wp-content/uploads/2022/10/Andrea-Torres-561x842.jpg" alt="Image 4" class="image">
+    </div>
+    <input type="text" id="userGuess" placeholder="Enter your guess" />
+    <button onclick="checkGuess()">Guess</button>
+</div>
+
+<div id="winPopup">
+    <p>Congrats here is your hint: Dalawang officers lang siguro na isip mo no? Sino kaya?</p>
+    <button onclick="closeWinPopup()">Play Again</button>
+</div>
+
+<script>
+    // Word to guess (based on the images shown above)
+    const correctWord = 'noli me tangere';
+
+    // Function to check player's guess
+    function checkGuess() {
+        const userGuess = document.getElementById('userGuess').value.toLowerCase();
+        const winPopup = document.getElementById('winPopup');
+
+        if (userGuess === correctWord) {
+            winPopup.style.display = 'block'; // Show win popup
+        } else {
+            alert('Try again! Hint: Famous characters from?');
+        }
+    }
+
+    // Function to close the win popup and reset the game
+    function closeWinPopup() {
+        document.getElementById('winPopup').style.display = 'none';
+        document.getElementById('userGuess').value = ''; // Clear the input
+    }
+</script>
+
+</body>
+</html>
